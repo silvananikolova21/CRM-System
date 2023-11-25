@@ -14,11 +14,9 @@ public class FileReader implements CustomReader {
         try (BufferedReader br = new BufferedReader(new java.io.FileReader("src/DataProcessing/data.csv"))){
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
-                if (!line.isEmpty()) {
-                    String[] clientsArr = line.split(",");
-                    Client client = new Client(Long.parseLong(clientsArr[0]), clientsArr[1], clientsArr[2], clientsArr[3], Double.parseDouble(clientsArr[4]));
-                    clients.add(client);
-                }
+                String[] clientsArr = line.split(",");
+                Client client = new Client(Long.parseLong(clientsArr[0]), clientsArr[1], clientsArr[2], clientsArr[3], Double.parseDouble(clientsArr[4]));
+                clients.add(client);
             }
         }catch (IOException e){
             System.out.println("No such file found");
